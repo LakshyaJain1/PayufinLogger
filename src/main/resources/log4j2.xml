@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30" packages="org.apache.logging.log4j.core,io.sentry.log4j2">
+    <CustomLevels>
+        <CustomLevel name="DIAGNOSE" intLevel="450"/>
+        <CustomLevel name="SECURITY" intLevel="50"/>
+    </CustomLevels>
+    <Appenders>
+        <RollingFile name="FILE"
+                     fileName="${sys:logPath}/${sys:serviceName}.log"
+                     filePattern="${sys:logPath}/${sys:serviceName}-%d{dd-MM-yyyy}.log">
+            <LevelRangeFilter minLevel="${sys:fileLogMinLevel}" maxLevel="${sys:fileLogMaxLevel}" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--LocationInfo like fileName and LineNo are explicitly disabled as it is an expensive operation-->
+            <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json" locationInfoEnabled="false">
+                <EventTemplateAdditionalField key="service_name" value="${sys:serviceName}"/>
+            </JsonTemplateLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="200MB"/>
+            </Policies>
+        </RollingFile>
+
+        <Console name="ConsoleJson" target="SYSTEM_OUT" follow="true">
+            <LevelRangeFilter minLevel="${sys:consoleLogMinLevel}" maxLevel="${sys:consoleLogMaxLevel}" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--LocationInfo like fileName and LineNo are explicitly disabled as it is an expensive operation-->
+            <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json" locationInfoEnabled="false">
+                <EventTemplateAdditionalField key="service_name" value="${sys:serviceName}"/>
+            </JsonTemplateLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="${sys:rootLogLevel}">
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ConsoleJson"/>
+        </Root>
+    </Loggers>
+</Configuration>
