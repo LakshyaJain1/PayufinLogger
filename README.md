@@ -50,8 +50,16 @@ This is Custom Payufin logger which you can integrate with your repos and log vi
 	</exclusions>
 </dependency>
 ```
-
-
+7. You need to define below System value in your deployment file in order to use the framework.
+```
+-DlogPath=var/log/application
+-DserviceName=Bre-Service
+-DfileLogMinLevel=SECURITY
+-DfileLogMaxLevel=DEBUG
+-DconsoleLogMinLevel=SECURITY
+-DconsoleLogMaxLevel=INFO
+-DrootLogLevel=INFO
+```
 6. At last you can remove @Log4j2, @Log4j or @Slf4j from the top of class and replace it with @CustomLog annotation from lombok to you Payufin Logger.
 
 
