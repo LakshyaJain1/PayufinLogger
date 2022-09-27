@@ -17,15 +17,15 @@ import org.apache.logging.log4j.util.Supplier;
  * <p>Compatible with Log4j 2.6 or higher.</p>
  */
 
-public final class ExtendedLogger extends ExtendedLoggerWrapper {
+public final class PayufinLogger extends ExtendedLoggerWrapper {
     private static final long serialVersionUID = 1126706546231208L;
     private final ExtendedLoggerWrapper logger;
 
-    private static final String FQCN = ExtendedLogger.class.getName();
+    private static final String FQCN = PayufinLogger.class.getName();
     private static final Level DIAGNOSE = Level.forName("DIAGNOSE", 450);
     private static final Level SECURITY = Level.forName("SECURITY", 50);
 
-    private ExtendedLogger(final Logger logger) {
+    private PayufinLogger(final Logger logger) {
         super((AbstractLogger) logger, logger.getName(), logger.getMessageFactory());
         this.logger = this;
     }
@@ -35,9 +35,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *
      * @return The custom Logger for the calling class.
      */
-    public static ExtendedLogger create() {
+    public static PayufinLogger create() {
         final Logger wrapped = LogManager.getLogger();
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
@@ -48,9 +48,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *            If null it will default to the calling class.
      * @return The custom Logger.
      */
-    public static ExtendedLogger create(final Class<?> loggerName) {
+    public static PayufinLogger create(final Class<?> loggerName) {
         final Logger wrapped = LogManager.getLogger(loggerName);
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
@@ -64,9 +64,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *            a warning if mismatched.
      * @return The custom Logger.
      */
-    public static ExtendedLogger create(final Class<?> loggerName, final MessageFactory messageFactory) {
+    public static PayufinLogger create(final Class<?> loggerName, final MessageFactory messageFactory) {
         final Logger wrapped = LogManager.getLogger(loggerName, messageFactory);
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
@@ -78,9 +78,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *            the logger name.
      * @return The custom Logger.
      */
-    public static ExtendedLogger create(final Object value) {
+    public static PayufinLogger create(final Object value) {
         final Logger wrapped = LogManager.getLogger(value);
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
@@ -95,9 +95,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *            a warning if mismatched.
      * @return The custom Logger.
      */
-    public static ExtendedLogger create(final Object value, final MessageFactory messageFactory) {
+    public static PayufinLogger create(final Object value, final MessageFactory messageFactory) {
         final Logger wrapped = LogManager.getLogger(value, messageFactory);
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
@@ -107,9 +107,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *            be used.
      * @return The custom Logger.
      */
-    public static ExtendedLogger create(final String name) {
+    public static PayufinLogger create(final String name) {
         final Logger wrapped = LogManager.getLogger(name);
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
@@ -122,9 +122,9 @@ public final class ExtendedLogger extends ExtendedLoggerWrapper {
      *            a warning if mismatched.
      * @return The custom Logger.
      */
-    public static ExtendedLogger create(final String name, final MessageFactory messageFactory) {
+    public static PayufinLogger create(final String name, final MessageFactory messageFactory) {
         final Logger wrapped = LogManager.getLogger(name, messageFactory);
-        return new ExtendedLogger(wrapped);
+        return new PayufinLogger(wrapped);
     }
 
     /**
