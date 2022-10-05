@@ -1,4 +1,4 @@
-package com.payu.payufinLogging;
+package com.payufin.integration.payufinLogger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

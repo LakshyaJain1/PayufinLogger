@@ -1,4 +1,4 @@
-package com.payu.payufinLogging;
+package com.payufin.integration.payufinLogger;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
