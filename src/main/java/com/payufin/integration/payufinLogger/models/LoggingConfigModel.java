@@ -1,6 +1,7 @@
 package com.payufin.integration.payufinLogger.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,13 +11,13 @@ import lombok.NoArgsConstructor;
  *
  <p>
  * This is Logging config model which can store the value which needs to be refreshed <br>
- * logPath <br>
- * serviceName <br>
- * rootLogLevel <br>
- * consoleLogMinLevel <br>
- * consoleLogMaxLevel <br>
- * fileLogMinLevel <br>
- * fileLogMaxLevel <br>
+ * - logPath <br>
+ * - serviceName <br>
+ * - rootLogLevel <br>
+ * - consoleLogMinLevel <br>
+ * - consoleLogMaxLevel <br>
+ * - fileLogMinLevel <br>
+ * - fileLogMaxLevel <br>
  *
  * </p>
  *
@@ -27,6 +28,7 @@ import lombok.NoArgsConstructor;
  */
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoggingConfigModel {
@@ -38,4 +40,5 @@ public class LoggingConfigModel {
     String consoleLogMaxLevel;
     String fileLogMinLevel;
     String fileLogMaxLevel;
+
 }
